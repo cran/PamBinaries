@@ -148,7 +148,7 @@ readPamData <- function(fid, fileInfo, skipLarge, debug=FALSE, keepUIDs, ...) {
         
         # now read the module-specific data
         if (isBackground) {
-            if(class(fileInfo$readModuleData)=='function') {
+            if(inherits(fileInfo$readModuleData, 'function')) {
                 result <- fileInfo$readBackgroundData(fid=fid, fileInfo=fileInfo, data=data)
                 data <- result$data
                 if(result$error) {
@@ -160,7 +160,7 @@ readPamData <- function(fid, fileInfo, skipLarge, debug=FALSE, keepUIDs, ...) {
                 }
             }
         } else {
-            if(class(fileInfo$readModuleData)=='function') {
+            if(inherits(fileInfo$readModuleData, 'function')) {
                 result <- fileInfo$readModuleData(fid=fid, fileInfo=fileInfo, data=data, 
                                                   skipLarge=skipLarge, debug=debug, ...)
                 data <- result$data
@@ -188,22 +188,28 @@ readPamData <- function(fid, fileInfo, skipLarge, debug=FALSE, keepUIDs, ...) {
                 anVersion <- pamBinRead(fid, 'int16', n=1)
                 switch(anId,
                        'Beer' = {
-                           # annotations$beamAngles <- readBeamFormerAnnotation(fid, anId, anLength, fileInfo, anVersion)
+                           annotations$beamAngles <- readBeamFormerAnnotation(fid, fileInfo, anVersion)
                        },
                        'Bearing' = {
-                           # annotations$bearing <- readBearingAnnotation(fid, anId, anLength, fileInfo, anVersion)
+                           annotations$bearing <- readBearingAnnotation(fid, fileInfo, anVersion)
                        },
                        'TMAN' = {
-                           # annotations$targetMotion <- readTMAnnotation(fid, anId, anLength, fileInfo, anVersion)
+                           annotations$targetMotion <- readTMAnnotation(fid, fileInfo, anVersion)
                        },
                        'TDBL' = {
-                           # annotations$toadAngles <- readTDBLAnnotation(fid, anId, anLength, fileInfo, anVersion)
+                           annotations$toadAngles <- readTDBLAnnotation(fid, fileInfo, anVersion)
                        },
                        'ClickClasssifier_1' = {
                            annotations$classification <- readClickClsfrAnnotation(fid, fileInfo)
                        },
                        'Matched_Clk_Clsfr' = {
                            annotations$mclassification <- readMatchClsfrAnnotation(fid, fileInfo, anVersion)
+                       },
+                       'DLRE' = {
+                           annotations$dlclassification <- readDLAnnotation(fid, fileInfo, anVersion)
+                       },
+                       'Delt' = {
+                           annotations$dlclassification <- readDLAnnotation(fid, fileInfo, anVersion)
                        },
                        {
                            warning(paste0('Unknown annotation type ', anId, ' length ', anLength, 

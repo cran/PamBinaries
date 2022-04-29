@@ -1,5 +1,5 @@
 <!-- badges: start -->
-[![Travis build status](https://app.travis-ci.com/TaikiSan21/PamBinaries.svg?branch=master)](https://app.travis-ci.com/TaikiSan21/PamBinaries)
+[![R-CMD-check](https://github.com/TaikiSan21/PamBinaries/workflows/R-CMD-check/badge.svg)](https://github.com/TaikiSan21/PamBinaries/actions)
 <!-- badges: end -->
 
 # PamBinaries
@@ -10,7 +10,10 @@ and Michael Oswald, and is written to work in the same way.
 
 ### Installation
 
-Install the latest version from GitHub:
+`PamBinaries` is available on CRAN, but it is possible that a more recent 
+version is available on GitHub (updates are typically rare for this package).
+
+To install the latest version from GitHub:
 
 ```r
 # make sure you have Rtools installed

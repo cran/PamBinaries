@@ -1,6 +1,6 @@
 Package: PamBinaries
 Title: Read and Process 'Pamguard' Binary Data
-Version: 1.6.0
+Version: 1.7.0
 Authors@R: c(
     TS = person("Taiki", "Sakai", email = "taiki.sakai@noaa.gov", role = c("aut", "cre")),
     MO = person("Michael", "Oswald", email = "mo55@st-andrews.ac.uk", role = c("aut")),
@@ -11,14 +11,14 @@ Description: Functions for easily reading and processing binary data files creat
 Depends: R (>= 3.4.0)
 License: GNU General Public License
 Encoding: UTF-8
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Imports: ggplot2, dplyr
 Suggests: testthat
 NeedsCompilation: no
-Packaged: 2021-10-08 17:18:54 UTC; tnsak
+Packaged: 2022-04-29 17:01:30 UTC; tnsak
 Author: Taiki Sakai [aut, cre],
   Michael Oswald [aut],
   Douglas Gillespie [ctb]
 Maintainer: Taiki Sakai <taiki.sakai@noaa.gov>
 Repository: CRAN
-Date/Publication: 2021-10-09 05:50:02 UTC
+Date/Publication: 2022-04-29 19:10:05 UTC
